@@ -19,7 +19,7 @@ Below is an example of taking new posts from `r/ruby` and posting them to your T
   - Create New App
     - Name: `whatever you want`
     - Description: `whatever you want`
-    - Website: `anything for now` (will change in step 3)
+    - Website: `http://google.com/` (will change in step 3)
     - Callback URL: `leave blank`
   - Save application
   - Select application
