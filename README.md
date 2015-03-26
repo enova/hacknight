@@ -40,13 +40,15 @@ Below is an example of taking new posts from `r/ruby` and posting them to your T
   - `cd reddit_to_twitter`
   - Change [server.rb](https://github.com/enova/reddit_to_twitter/blob/master/server.rb#L13) with your Twitter secret keys from above
   - `git add .`
-  - `git commit`
+  - `git commit -m 'added keys'`
   - `heroku create` (you can pass a name if you want)
   - `git push heroku master`
   - Update the Website setting on the Twitter app you created (step 2)
   
 5. Configure [ifttt](https://github.com/enova/ifttt/) app and deploy to Heroku
   - Change `var heroku_app` in [app.js](https://github.com/enova/ifttt/blob/master/app.js#L14) with your heroku URL for the reddit_to_twitter application
+  - `git add .`
+  - `git commit -m 'added heroku url'`
   - `heroku create` (you can pass a name if you want)
   - `git push heroku master`
 
