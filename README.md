@@ -27,6 +27,10 @@ Below is an example of taking new posts from `r/ruby` and posting them to your T
     - Click on the Keys and Access Tokens tab. Generate an `Access Token`
     - Copy your generated keys for below
   
+2.5. Install Git/Git for Windows and Heroku Toolbelt
+    - [http://git-scm.com/download/win](http://git-scm.com/download/win)
+    - [https://toolbelt.heroku.com/windows](https://toolbelt.heroku.com/windows)
+  
 3.  Configure [reddit_to_twitter](https://github.com/enova/reddit_to_twitter/) app and deploy to Heroku
   - `cd reddit_to_twitter`
   - Change [server.rb](https://github.com/enova/reddit_to_twitter/blob/master/server.rb#L13) with your Twitter secret keys from above
