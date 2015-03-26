@@ -33,6 +33,7 @@ Below is an example of taking new posts from `r/ruby` and posting them to your T
   
 3. Clone down the repo:
   - `git clone https://github.com/enova/hacknight/`
+  - `cd hacknight`
   - `git submodule init`
   - `git submodule update`
 
