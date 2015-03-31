@@ -3,8 +3,6 @@ We're going to use [IFTTT](ifttt.com) to grab posts on reddit, send them to a fa
 
 Below is an example of taking new posts from `r/ruby` and posting them to your Twitter account.
 
-#### `git clone https://github.com/enova/hacknight`
-
 ---
 
 #### reddit_to_twitter
@@ -31,32 +29,30 @@ Below is an example of taking new posts from `r/ruby` and posting them to your T
   - [http://git-scm.com/download/win](http://git-scm.com/download/win)
   - [https://toolbelt.heroku.com/windows](https://toolbelt.heroku.com/windows)
   
-3. Clone down the repo:
-  - `git clone https://github.com/enova/hacknight/`
-  - `cd hacknight`
-  - `git submodule init`
-  - `git submodule update`
+3. Clone down the repos:
+  - `git clone https://github.com/enova/ifttt`
+  - `git clone https://github.com/enova/reddit_to_twitter`
 
 3.  Configure [reddit_to_twitter](https://github.com/enova/reddit_to_twitter/) app and deploy to Heroku
   - `cd reddit_to_twitter`
   - Change [server.rb](https://github.com/enova/reddit_to_twitter/blob/master/server.rb#L13) with your Twitter secret keys from above
   - `git add .`
   - `git commit -m 'added keys'`
-  - `heroku create` (you can pass a name if you want)
+  - `heroku create YOURNAME-ruby` (replace YOURNAME with... your name)
   - `git push heroku master`
-  - Update the Website setting on the Twitter app you created (step 2)
+  - Update the Website setting on the Twitter app you created (step 2) with `YOURNAME-ruby.herokuapp.com`
   
 5. Configure [ifttt](https://github.com/enova/ifttt/) app and deploy to Heroku
-  - Change `var heroku_app` in [app.js](https://github.com/enova/ifttt/blob/master/app.js#L14) with your heroku URL for the reddit_to_twitter application
+  - Edit [app.js](https://github.com/enova/ifttt/blob/master/app.js#L14) and change `var heroku_app`  with your heroku URL for the reddit_to_twitter application (i.e `YOURNAME-ruby.herokuapp.com`)
   - `git add .`
   - `git commit -m 'added heroku url'`
-  - `heroku create` (you can pass a name if you want)
+  - `heroku create YOURNAME-node` (replace YOURNAME with... your name)
   - `git push heroku master`
 
 6. Add [IFTTT.com](http://ifttt.com) channels
   - When logged in, go to  `Channels`
   - Select `WordPress`
-    - Blog URL: `heroku URL for ifttt application` (step 5)
+    - Blog URL: `heroku URL for ifttt application` (i.e `YOURNAME-node.herokuapp.com`)
     - Username: `first name`
     - Password: `anything`
   - Activate 
