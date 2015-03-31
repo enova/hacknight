@@ -1,0 +1,8 @@
+[submodule "ifttt"]
+	path = ifttt
+	url = https://github.com/enova/ifttt
+	branch = master
+[submodule "reddit_to_twitter"]
+	path = reddit_to_twitter
+	url = https://github.com/enova/reddit_to_twitter
+	branch = master
