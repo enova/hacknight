@@ -80,3 +80,12 @@ Below is an example of taking new posts from `r/ruby` and posting them to your T
   - Check the log to see if it ran successfully
 
 9. Annoy your followers with automatically posted tweets.
+
+#### debugging
+
+You've finished the above steps, yet you're still not seeing any tweets? 
+
+- Use the command `heroku logs` inside of your app folders. This will show you the server log from your heroku apps. 
+  - In the `ifttt` app log, if you aren't seeing any lines that say **POST**, it's likely that your IFTTT Wordpress Trigger isn't pointing to the right app. Ensure it's pointing to your name app (YOURNAME-node.herokuapp.com)
+  - In the `reddit_to_twitter` app log, if you aren't seeing any lines that say **POST** check your `ifttt` app and ensure the heroku_url is set to your ruby app (YOURNAME-ruby.herokuapp.com).
+  
