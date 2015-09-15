@@ -1,5 +1,5 @@
 ## [![enova](http://i.imgur.com/5aGFxNT.png)](http://www.enova.com) SOA hacknight
-We're going to use [IFTTT](ifttt.com) to grab posts on reddit, send them to a fake a Wordpress application ([ifttt](https://github.com/enova/ifttt)), then to an external application to play with ([reddit_to_twitter](https://github.com/enova/reddit_to_twitter)). 
+We're going to use [IFTTT](ifttt.com) to grab posts on reddit and send them to an external application to play with ([reddit_to_twitter](https://github.com/enova/reddit_to_twitter)). 
 
 Below is an example of taking new posts from `r/ruby` and posting them to your Twitter account.
 
@@ -29,11 +29,10 @@ Below is an example of taking new posts from `r/ruby` and posting them to your T
   - [http://git-scm.com/download/win](http://git-scm.com/download/win)
   - [https://toolbelt.heroku.com/windows](https://toolbelt.heroku.com/windows)
   
-3. Clone down the repos:
-  - `git clone https://github.com/enova/ifttt`
+3. Clone down the repo:
   - `git clone https://github.com/enova/reddit_to_twitter`
 
-3.  Configure [reddit_to_twitter](https://github.com/enova/reddit_to_twitter/) app and deploy to Heroku
+4.  Configure [reddit_to_twitter](https://github.com/enova/reddit_to_twitter/) app and deploy to Heroku
   - `cd reddit_to_twitter`
   - Change [server.rb](https://github.com/enova/reddit_to_twitter/blob/master/server.rb#L13) with your Twitter secret keys from above
   - `git add .`
@@ -41,20 +40,10 @@ Below is an example of taking new posts from `r/ruby` and posting them to your T
   - `heroku create YOURNAME-ruby` (replace YOURNAME with... your name)
   - `git push heroku master`
   - Update the Website setting on the Twitter app you created (step 2) with `YOURNAME-ruby.herokuapp.com`
-  
-5. Configure [ifttt](https://github.com/enova/ifttt/) app and deploy to Heroku
-  - Edit [app.js](https://github.com/enova/ifttt/blob/master/app.js#L14) and change `var heroku_app`  with your heroku URL for the reddit_to_twitter application (i.e `YOURNAME-ruby.herokuapp.com`)
-  - `git add .`
-  - `git commit -m 'added heroku url'`
-  - `heroku create YOURNAME-node` (replace YOURNAME with... your name)
-  - `git push heroku master`
 
-6. Add [IFTTT.com](http://ifttt.com) channels
+5. Add [IFTTT.com](http://ifttt.com) channels
   - When logged in, go to  `Channels`
-  - Select `WordPress`
-    - Blog URL: `heroku URL for ifttt application` (i.e `YOURNAME-node.herokuapp.com`)
-    - Username: `first name`
-    - Password: `anything`
+  - Select `Maker`
   - Activate 
   - Go back to `Channels`
   - Select `Reddit`
@@ -69,10 +58,12 @@ Below is an example of taking new posts from `r/ruby` and posting them to your T
       - `Any new post in a subreddit` as a Trigger
       - `ruby` or any subreddit you want
   - Click `That`
-    - Select `WordPress` as Action Channel
-      - `Create a post` as Action
-        - Title: `whatever you want` (this is what you will tweet)
-        - Body: `whatever you want`
+    - Select `Maker` as Action Channel
+      - `Make a Web Request` as Action
+        - Url: `YOURNAME-ruby.herokuapp.com`
+        - Method: `post`
+        - Content Type: `application/json`
+        - Body: `{{Title}} - {{Content}}` (feel free to use something else)
     - Create Recipe
 
 8. Manually Trigger the Recipe 
@@ -86,6 +77,4 @@ Below is an example of taking new posts from `r/ruby` and posting them to your T
 You've finished the above steps, yet you're still not seeing any tweets? 
 
 - Use the command `heroku logs` inside of your app folders. This will show you the server log from your heroku apps. 
-  - In the `ifttt` app log, if you aren't seeing any lines that say **POST**, it's likely that your IFTTT Wordpress Trigger isn't pointing to the right app. Ensure it's pointing to your name app (YOURNAME-node.herokuapp.com)
-  - In the `reddit_to_twitter` app log, if you aren't seeing any lines that say **POST** check your `ifttt` app and ensure the heroku_url is set to your ruby app (YOURNAME-ruby.herokuapp.com).
   
